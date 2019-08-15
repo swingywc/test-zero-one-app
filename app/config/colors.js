@@ -5,6 +5,7 @@ colors.THEME = {
   SECONDARY: '#c88d00'
 };
 
+colors.APPBAR_TITLE = '#fff';
 colors.DESCRIPTION = '#555';
 
 export const COLORS = colors;
