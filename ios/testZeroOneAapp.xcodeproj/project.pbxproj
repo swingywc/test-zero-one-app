@@ -14,6 +14,12 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1BB841203A7FDD6E0B9BB4A7 /* libPods-testZeroOneAapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B346C0A9ED52A7FA9AAEF7BB /* libPods-testZeroOneAapp.a */; };
 		1D4CFFE3DF71B60AD1A6BCF0 /* libPods-testZeroOneAappTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38845FABCCD8E944C5237D3D /* libPods-testZeroOneAappTests.a */; };
+		206DB21A230552C90032B5C5 /* fa-solid-900.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 206DB217230552C90032B5C5 /* fa-solid-900.ttf */; };
+		206DB21B230552C90032B5C5 /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 206DB218230552C90032B5C5 /* fa-brands-400.ttf */; };
+		206DB21C230552C90032B5C5 /* fa-regular-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 206DB219230552C90032B5C5 /* fa-regular-400.ttf */; };
+		206DB21D230552D50032B5C5 /* fa-brands-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 206DB218230552C90032B5C5 /* fa-brands-400.ttf */; };
+		206DB21E230552D80032B5C5 /* fa-regular-400.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 206DB219230552C90032B5C5 /* fa-regular-400.ttf */; };
+		206DB21F230552DA0032B5C5 /* fa-solid-900.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 206DB217230552C90032B5C5 /* fa-solid-900.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
@@ -52,6 +58,9 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = testZeroOneAapp/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = testZeroOneAapp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = testZeroOneAapp/main.m; sourceTree = "<group>"; };
+		206DB217230552C90032B5C5 /* fa-solid-900.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-solid-900.ttf"; sourceTree = "<group>"; };
+		206DB218230552C90032B5C5 /* fa-brands-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-brands-400.ttf"; sourceTree = "<group>"; };
+		206DB219230552C90032B5C5 /* fa-regular-400.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fa-regular-400.ttf"; sourceTree = "<group>"; };
 		29C1DE61113FCE59D98BEAEB /* Pods-testZeroOneAapp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-testZeroOneAapp-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-testZeroOneAapp-tvOSTests/Pods-testZeroOneAapp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* testZeroOneAapp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "testZeroOneAapp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* testZeroOneAapp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "testZeroOneAapp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +168,9 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				206DB218230552C90032B5C5 /* fa-brands-400.ttf */,
+				206DB219230552C90032B5C5 /* fa-regular-400.ttf */,
+				206DB217230552C90032B5C5 /* fa-solid-900.ttf */,
 				13B07FAE1A68108700A75B9A /* testZeroOneAapp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* testZeroOneAappTests */,
@@ -194,7 +206,6 @@
 				CCEF948E1296F8EF9121354D /* Pods-testZeroOneAappTests.debug.xcconfig */,
 				4BAD69C9DE0DC51C9D79046B /* Pods-testZeroOneAappTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -329,6 +340,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				206DB21F230552DA0032B5C5 /* fa-solid-900.ttf in Resources */,
+				206DB21D230552D50032B5C5 /* fa-brands-400.ttf in Resources */,
+				206DB21E230552D80032B5C5 /* fa-regular-400.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +350,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				206DB21B230552C90032B5C5 /* fa-brands-400.ttf in Resources */,
+				206DB21C230552C90032B5C5 /* fa-regular-400.ttf in Resources */,
+				206DB21A230552C90032B5C5 /* fa-solid-900.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
