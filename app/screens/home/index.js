@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { SafeAreaView, View, ActivityIndicator } from 'react-native';
-import { Navigator } from 'react-navigation';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 import { COLORS } from '@config/colors';
 import MobileApp from '@models/mobile-app';
@@ -28,10 +28,15 @@ class HomeScreen extends PureComponent {
     } catch(error) {
       if (error.message != 'Network request failed') {
         console.log("Unexpected error detected. Sent to firebase: ", error.message);
-
-        // Navigator.reset("/network-error");
-        return false;
       }
+
+      const resetAction = StackActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: 'NetworkError' })],
+      });
+      this.props.navigation.dispatch(resetAction);
+
+      return false;
     }
   }
 
