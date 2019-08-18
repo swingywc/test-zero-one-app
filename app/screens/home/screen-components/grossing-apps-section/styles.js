@@ -1,19 +1,15 @@
 import { StyleSheet } from 'react-native';
 
 import { COLORS } from '@config/colors';
-
-export const SIZE = {
-  SECTION_HORIZONTAL_PADDING: 5,
-  APP_HORIZONTAL_MARGIN: 10
-};
+import { GROSSING_SECTION_HORIZONTAL_PADDING, APP_WIDTH, APP_HORIZONTAL_MARGIN } from '@config/dimensions';
 
 export const styles = StyleSheet.create({
   section: {
     width: '100%',
-    paddingVertical: SIZE.SECTION_HORIZONTAL_PADDING + SIZE.APP_HORIZONTAL_MARGIN
+    paddingVertical: GROSSING_SECTION_HORIZONTAL_PADDING + APP_HORIZONTAL_MARGIN
   },
   title: {
-    marginLeft: SIZE.SECTION_HORIZONTAL_PADDING + SIZE.APP_HORIZONTAL_MARGIN,
+    marginLeft: GROSSING_SECTION_HORIZONTAL_PADDING + APP_HORIZONTAL_MARGIN,
     fontSize: 22,
     fontWeight: 'bold'
   },
@@ -25,13 +21,14 @@ export const styles = StyleSheet.create({
   },
   flatList: {
     paddingVertical: 15,
-    paddingHorizontal: SIZE.SECTION_HORIZONTAL_PADDING
+    paddingHorizontal: GROSSING_SECTION_HORIZONTAL_PADDING
   }
 });
 
 export const appStyles = StyleSheet.create({
   appBox: {
-    marginHorizontal: SIZE.APP_HORIZONTAL_MARGIN
+    width: APP_WIDTH,
+    marginHorizontal: APP_HORIZONTAL_MARGIN
   },
   iconShadow: {
     shadowColor: COLORS.APP_ICON_SHADOW,
@@ -40,6 +37,8 @@ export const appStyles = StyleSheet.create({
     shadowRadius: 2,
   },
   icon: {
+    width: APP_WIDTH,
+    height: APP_WIDTH,
     borderRadius: 15
   },
   name: {
