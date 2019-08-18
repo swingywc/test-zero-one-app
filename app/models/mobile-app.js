@@ -26,12 +26,11 @@ class MobileApp extends Model {
 
     if (response.isSuccess) {
       let listOfAppIds = response.message.feed.entry.map((app) => app.id.attributes["im:id"]);
-
       let listOfApps = listOfAppIds.map(async (appId) => {
         return await this.find(appId);
-      })
+      });
 
-      return listOfApps;
+      return Promise.all(listOfApps);
     } else {
       return null;
     }
@@ -39,12 +38,12 @@ class MobileApp extends Model {
 
   static async getTopFree(numberOfApps = 100) {
     let endpoint = APIs.TOP_FREE_MOBILE_APPS(numberOfApps); // TESTED: the api link can only get 100.
-    return this.getList(endpoint);
+    return await this.getList(endpoint);
   }
 
   static async getTopGrossing(numberOfApps = 10) {
     let endpoint = APIs.TOP_GROSSING_MOBILE_APPS(numberOfApps); // TESTED: why it can only get 10...
-    return this.getList(endpoint);
+    return await this.getList(endpoint);
   }
 
   static async find(id) {
