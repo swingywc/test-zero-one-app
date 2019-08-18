@@ -3,7 +3,7 @@ import { View, Text, FlatList, Image, Dimensions, TouchableOpacity } from 'react
 
 import { SIZE, styles, appStyles } from './styles';
 
-class RecommendSection extends PureComponent {
+class GrossingAppsSection extends PureComponent {
   render() {
     const APPS_IN_SCREEN = 3.5;
     const appWidth = ((Dimensions.get('window').width - SIZE.SECTION_HORIZONTAL_PADDING) / APPS_IN_SCREEN)
@@ -17,7 +17,7 @@ class RecommendSection extends PureComponent {
           style={styles.flatList}
           data={this.props.apps}
           keyExtractor={(app, index) => `recommend-app-${index}`}
-          renderItem={(app) => (<RecommendApp iconWidth={appWidth} app={app.item} />)}
+          renderItem={(app) => (<GrossingApp iconWidth={appWidth} app={app.item} />)}
           horizontal={true}
         />
       </View>
@@ -25,7 +25,7 @@ class RecommendSection extends PureComponent {
   }
 }
 
-class RecommendApp extends PureComponent {
+class GrossingApp extends PureComponent {
   render() {
     const { icon, name, categories, userRating, userRatingCount, price } = this.props.app;
     const { iconWidth } = this.props;
@@ -47,4 +47,4 @@ class RecommendApp extends PureComponent {
   }
 }
 
-export default RecommendSection;
+export default GrossingAppsSection;

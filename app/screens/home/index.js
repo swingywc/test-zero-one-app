@@ -6,7 +6,7 @@ import { COLORS } from '@config/colors';
 import MobileApp from '@models/mobile-app';
 
 import SearchField from './screen-components/search-field';
-import RecommendSection from './screen-components/recommend-section';
+import GrossingAppsSection from './screen-components/grossing-apps-section';
 import { styles } from './styles';
 
 class HomeScreen extends PureComponent {
@@ -53,7 +53,7 @@ class HomeScreen extends PureComponent {
                 <ActivityIndicator size="large" color={COLORS.THEME.PRIMARY} />
               </View>
             ) : (
-              <RecommendSection apps={this.topGrossingApps} />
+              <GrossingAppsSection apps={this.topGrossingApps} />
             )
           }
         </View>
