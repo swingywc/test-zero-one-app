@@ -13,6 +13,7 @@ class MobileApp extends Model {
     this.categories = mobileAppData.genres;
     this.link = mobileAppData.trackViewUrl;
     this.version = mobileAppData.version;
+    this.author = mobileAppData.artistName;
 
     this.description = mobileAppData.description;
     this.price = mobileAppData.price;
