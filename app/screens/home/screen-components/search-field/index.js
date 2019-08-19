@@ -20,6 +20,7 @@ class SearchField extends PureComponent {
           style={styles.input}
           returnKeyType="search"
           autoCapitalize="none"
+          placeholder={this.props.placeholder}
           onChangeText={this._onChangeText.bind(this)}
           value={this.state.value}
         />

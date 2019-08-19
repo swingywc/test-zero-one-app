@@ -83,7 +83,11 @@ class HomeScreen extends PureComponent {
       <SafeAreaView style={styles.safeAreaView}>
         <View style={styles.screen}>
           <View style={styles.searchInputSection}>
-            <SearchField keyword={this.state.searchKeyword} onChangeText={this.filterByKeyword.bind(this)} />
+            <SearchField
+              placeholder={`試試「${this.topFreeApps.length > 0 ? this.topFreeApps[0].name : ""}」`}
+              keyword={this.state.searchKeyword}
+              onChangeText={this.filterByKeyword.bind(this)}
+            />
           </View>
 
           { this.state.loading ? (

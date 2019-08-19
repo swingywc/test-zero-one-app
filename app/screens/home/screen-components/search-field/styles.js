@@ -16,8 +16,8 @@ export const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    fontSize: 18,
+    fontSize: 16,
     color: '#555',
-    paddingVertical: 8
+    paddingVertical: 10
   }
 });
