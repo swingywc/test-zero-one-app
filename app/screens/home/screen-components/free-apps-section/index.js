@@ -97,7 +97,7 @@ class FreeAppsSection extends PureComponent {
         keyExtractor={(app, index) => `free-app-${app.id}`}
         renderItem={(app) => (<FreeApp indexing={app.index + 1} app={app.item} />)}
         onEndReached={this._onEndReached.bind(this)}
-        onEndReachedThreshold={0}
+        onEndReachedThreshold={0.5}
         onMomentumScrollBegin={() => { this._onEndReachedCalledDuringMomentum = false; }}
         removeClippedSubviews
       />
