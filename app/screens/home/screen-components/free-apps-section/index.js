@@ -1,30 +1,87 @@
 import React, { PureComponent } from 'react';
-import { FlatList, View, Text, Image, TouchableOpacity } from 'react-native';
+import { FlatList, View, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+
+import { COLORS } from '@config/colors';
 
 import { styles, appStyles } from './styles';
 
 class FreeAppsSection extends PureComponent {
+  _appsPerPage = 10;
+  _initialPageIndex = 1;
+  _onEndReachedCalledDuringMomentum = true;
+  appsList = this.props.apps.filter((app) => app != null);
+
+  state = {
+    page: 0,
+    isFullListRendered: false,
+    renderList: []
+  };
+
+  componentDidMount() {
+    this.setState({
+      page: this._initialPageIndex,
+      renderList: this._getListSlice(this._initialPageIndex)
+    });
+  }
+
+  _onEndReached() {
+    if (!this.appsList || this.appsList.length == 0) { return false; } // prevent running _onEndReached() when apps data is not ready
+
+    if (!this._onEndReachedCalledDuringMomentum) {
+      let nextPageIndex = this.state.page + 1,
+        isFullListRendered = nextPageIndex * this._appsPerPage >= this.appsList.length,
+        nextAddListArray = this._getListSlice(nextPageIndex);
+      this._onEndReachedCalledDuringMomentum = true;
+
+      this.setState({
+        page: nextPageIndex,
+        isFullListRendered: isFullListRendered,
+        renderList: [...this.state.renderList, ...nextAddListArray]
+      });
+    }
+  }
+
+  _getListSlice(index) {
+    let indexOfFirstAddItem = (index - 1) * this._appsPerPage,
+        listSlice = this.appsList.slice(indexOfFirstAddItem, (indexOfFirstAddItem + this._appsPerPage));
+    return listSlice;
+  }
+
   _renderHeaderComponent() {
     return (
       <View>
         {this.props.headerComponent}
         <View style={styles.header}>
           <Text style={styles.title}>免費好鴨</Text>
-          <Text style={styles.description}>唔駛錢，隨便</Text>
+          <Text style={styles.description}>唔駛錢，請隨便</Text>
         </View>
       </View>
     );
   }
 
-  render() {
-    console.log("free apps list: ", this.props.apps);
+  _renderFooterComponent() {
+    return (
+      <View style={styles.footer}>
+        {this.state.isFullListRendered ?
+          (<Text style={styles.endStatement}>已顯示全部好鴨。</Text>) :
+          (<ActivityIndicator size="large" color={COLORS.THEME.PRIMARY} />)
+        }
+      </View>
+    );
+  }
 
+  render() {
     return (
       <FlatList
         ListHeaderComponent={this._renderHeaderComponent.bind(this)}
-        data={this.props.apps.filter((app) => app != null)}
+        ListFooterComponent={this._renderFooterComponent.bind(this)}
+        data={this.state.renderList}
         keyExtractor={(app, index) => `free-app-${app.id}`}
         renderItem={(app) => (<FreeApp indexing={app.index + 1} app={app.item} />)}
+        onEndReached={this._onEndReached.bind(this)}
+        onEndReachedThreshold={0}
+        onMomentumScrollBegin={() => { this._onEndReachedCalledDuringMomentum = false; }}
+        removeClippedSubviews
       />
     );
   }

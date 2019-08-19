@@ -18,6 +18,16 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     color: '#555'
   },
+  footer: {
+    paddingVertical: 40,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  endStatement: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: COLORS.END_STATEMENT
+  }
 });
 
 export const appStyles = StyleSheet.create({
