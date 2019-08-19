@@ -14,7 +14,9 @@ class HomeScreen extends PureComponent {
   static navigationOptions = { title: '好鴨排行榜' };
   state = {
     loading: true,
-    searchKeyword: ''
+    searchKeyword: '',
+    freeApps: [],
+    grossingApps: []
   };
 
   topFreeApps = [];
@@ -29,7 +31,11 @@ class HomeScreen extends PureComponent {
         throw new Error('Network request failed');
       }
 
-      this.setState({ loading: false });
+      this.setState({
+        loading: false,
+        freeApps: this.topFreeApps,
+        grossingApps: this.topGrossingApps
+      });
     } catch(error) {
       if (error.message != 'Network request failed') {
         console.log("Unexpected error detected. Sent to firebase: ", error.message);
@@ -45,12 +51,39 @@ class HomeScreen extends PureComponent {
     }
   }
 
+  filterByKeyword(keyword) {
+    if (keyword != "") {
+      let filterFreeApps = this.topFreeApps.filter((app) => {
+        return JSON.stringify(app)
+                   .replace(/[\{\"\:\}]/g, "")
+                   .indexOf(keyword) > 0;
+      });
+      let filterGrossingApps = this.topGrossingApps.filter((app) => {
+        return JSON.stringify(app)
+                   .replace(/[\{\"\:\}]/g, "")
+                   .indexOf(keyword) > 0;
+      });
+
+      console.log("free app filter ", filterFreeApps);
+
+      this.setState({
+        freeApps: filterFreeApps,
+        grossingApps: filterGrossingApps
+      });
+    } else {
+      this.setState({
+        freeApps: this.topFreeApps,
+        grossingApps: this.topGrossingApps
+      });
+    }
+  }
+
   render() {
     return (
       <SafeAreaView style={styles.safeAreaView}>
         <View style={styles.screen}>
           <View style={styles.searchInputSection}>
-            <SearchField keyword={this.state.searchKeyword} onTextChange={() => {}} />
+            <SearchField keyword={this.state.searchKeyword} onChangeText={this.filterByKeyword.bind(this)} />
           </View>
 
           { this.state.loading ? (
@@ -59,8 +92,8 @@ class HomeScreen extends PureComponent {
               </View>
             ) : (
               <FreeAppsSection
-                headerComponent={(<GrossingAppsSection apps={this.topGrossingApps} />)}
-                apps={this.topFreeApps}
+                headerComponent={(<GrossingAppsSection apps={this.state.grossingApps} />)}
+                apps={this.state.freeApps}
               />
             )
           }

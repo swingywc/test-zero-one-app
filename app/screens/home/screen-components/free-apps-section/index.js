@@ -12,13 +12,27 @@ class FreeAppsSection extends PureComponent {
   appsList = this.props.apps.filter((app) => app != null);
 
   state = {
+    loading: true,
     page: 0,
     isFullListRendered: false,
     renderList: []
   };
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ loading: true });
+
+    this.appsList = nextProps.apps.filter((app) => app != null);
+    this.setState({
+      loading: false,
+      isFullListRendered: nextProps.apps.length <= this._appsPerPage,
+      page: this._initialPageIndex,
+      renderList: this._getListSlice(this._initialPageIndex)
+    });
+  }
+
   componentDidMount() {
     this.setState({
+      loading: false,
       page: this._initialPageIndex,
       renderList: this._getListSlice(this._initialPageIndex)
     });
@@ -71,6 +85,10 @@ class FreeAppsSection extends PureComponent {
   }
 
   render() {
+    if (this.state.loading) {
+      return (<ActivityIndicator size="large" color={COLORS.THEME.PRIMARY} />);
+    }
+
     return (
       <FlatList
         ListHeaderComponent={this._renderHeaderComponent.bind(this)}
