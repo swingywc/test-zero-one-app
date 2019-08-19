@@ -7,6 +7,7 @@ import MobileApp from '@models/mobile-app';
 
 import SearchField from './screen-components/search-field';
 import GrossingAppsSection from './screen-components/grossing-apps-section';
+import FreeAppsSection from './screen-components/free-apps-section';
 import { styles } from './styles';
 
 class HomeScreen extends PureComponent {
@@ -23,6 +24,10 @@ class HomeScreen extends PureComponent {
     try {
       this.topFreeApps = await MobileApp.getTopFree();
       this.topGrossingApps = await MobileApp.getTopGrossing();
+
+      if (this.topFreeApps == null || this.topGrossingApps == null) {
+        throw new Error('Network request failed');
+      }
 
       this.setState({ loading: false });
     } catch(error) {
@@ -53,7 +58,10 @@ class HomeScreen extends PureComponent {
                 <ActivityIndicator size="large" color={COLORS.THEME.PRIMARY} />
               </View>
             ) : (
-              <GrossingAppsSection apps={this.topGrossingApps} />
+              <FreeAppsSection
+                headerComponent={(<GrossingAppsSection apps={this.topGrossingApps} />)}
+                apps={this.topFreeApps}
+              />
             )
           }
         </View>

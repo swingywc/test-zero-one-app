@@ -7,6 +7,8 @@ colors.THEME = {
 
 colors.APPBAR_TITLE = '#fff';
 colors.DESCRIPTION = '#555';
+colors.BORDER = '#ddd';
+colors.INDEXING = '#999';
 colors.APP_ICON_SHADOW = '#333';
 colors.APP_NAME = '#333';
 colors.APP_CATEGORY = '#777';
