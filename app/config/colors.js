@@ -13,4 +13,6 @@ colors.APP_ICON_SHADOW = '#333';
 colors.APP_NAME = '#333';
 colors.APP_CATEGORY = '#777';
 colors.END_STATEMENT = '#999';
+colors.USER_COUNT = '#aaa';
+colors.STAR_RATING = '#ffd203';
 export const COLORS = colors;

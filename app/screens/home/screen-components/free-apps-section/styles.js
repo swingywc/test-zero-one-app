@@ -71,6 +71,7 @@ export const appStyles = StyleSheet.create({
   },
   appDetails: {
     flex: 1,
+    justifyContent: 'space-between',
     marginHorizontal: 10
   },
   name: {

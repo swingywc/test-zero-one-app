@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { FlatList, View, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 
+import StarRating from '@components/star-rating';
 import { COLORS } from '@config/colors';
 
 import { styles, appStyles } from './styles';
@@ -105,6 +106,7 @@ class FreeAppsSection extends PureComponent {
   }
 }
 
+
 class FreeApp extends PureComponent {
   render() {
     const { icon, name, categories, userRating, userRatingCount, price } = this.props.app;
@@ -125,9 +127,11 @@ class FreeApp extends PureComponent {
             />
           </View>
           <View style={appStyles.appDetails}>
-            <Text style={appStyles.name} numberOfLines={2}>{name}</Text>
-            <Text style={appStyles.category}>{categories[0]}</Text>
-            {/*<View>{userRating}</View>*/}
+            <View>
+              <Text style={appStyles.name} numberOfLines={2}>{name}</Text>
+              <Text style={appStyles.category}>{categories[0]}</Text>
+            </View>
+            <StarRating userRating={userRating} userCount={userRatingCount} />
           </View>
         </TouchableOpacity>
         <View style={appStyles.buttonBox}>
